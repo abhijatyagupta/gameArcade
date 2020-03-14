@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'SFMono';
+    src: url('SFMono-Regular.woff2') format('woff2'),
+        url('SFMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'League Gothic';
+    src: url('LeagueGothic-Regular.woff2') format('woff2'),
+        url('LeagueGothic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.woff2') format('woff2'),
+        url('PressStart2P-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
