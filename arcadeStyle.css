@@ -1,0 +1,105 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100px;
+}
+
+body {
+	background-color: black;
+	color: white;
+}
+
+.head-container {
+	text-align: center;
+	margin-top: 2%;
+	line-height: 150%;
+	user-select: none;
+	display: block;
+	padding-left: 37%;
+	padding-right: 35%;
+	margin-bottom: 7%;
+}
+
+.heading-div {
+	text-align: left;
+	border: 1px solid white;
+	border-radius: 11px;
+/*	margin: 5% 30% 10% 3%;*/
+	display: block;
+	padding-top: 2%;
+	padding-bottom: -10%;
+	line-height: 100%;
+}
+
+.game {
+	font-family: 'League Gothic';
+	display: inline-block;
+	font-size: 130%;
+	-webkit-text-stroke: 3px #1286EB;
+}
+
+.arcade {
+	font-family: 'League Gothic';
+	display: inline-block;
+	font-size: 130%;
+	padding-left: 22%;
+}
+
+.badge {
+	border-radius: 5px;
+	background-color: #FFAA00;
+}
+
+.web {
+	background-color: #FFAA00;
+	border-radius: 3px;
+	font-family: 'SF Mono';
+	font-size: 12%;
+	padding: 2px 2px 1px 3px;
+	margin-left: 40%;
+	display: inline-block;
+	line-height: 100%;
+}
+
+.game-and-web-container {
+	display: block;
+	line-height: 100%;
+}
+
+.menu-header {
+	margin-bottom: 7%;
+	text-align: center;
+	font-family: 'Press Start 2P';
+	font-size: 25%;
+	user-select: none;
+}
+
+.menu-container {
+	text-align: left;
+	margin-left: 34%;
+	font-family: 'Press Start 2P';
+	font-size: 25%;
+	user-select: none;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: block;
+}
+
+.selectedGame {
+	display: inline-block;
+	color: #cfa725;
+}
+
+/*
+.spec-effect {
+	text-shadow: 1px -1px 0px red, -0.5px 0.5px 0px cyan;
+}*/
