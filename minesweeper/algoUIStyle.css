@@ -1,0 +1,84 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100px;
+	color: black;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #efefef;
+}
+
+.grid-container {
+	font-size: 50%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+	padding: 2%;
+}
+
+table {
+	display: inline-block;
+}
+
+td {
+	box-shadow: 2px 2px 0px black;
+	width: 65px;
+	height: 65px;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid #35363a;
+	background-color: white;
+	user-select: none;
+	cursor: pointer;
+	font-family: 'Segoe UI Symbol';
+	font-size: 55%;
+}
+
+td:active {
+	box-shadow: 0.5px 0.5px 0px black;
+}
+
+
+
+.loading-container {
+	position: fixed;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: 'Press Start 2P';
+	background-color: rgba(0, 0, 0, 0.8);
+	font-size: 20%;
+	color: white;
+	width: 100%;
+	height: 100%;
+	user-select: none;
+}
+
+.loading-container p {
+	padding: 5% 5%;
+	background-color: rgba(255, 255, 255, 0.25);
+	border-radius: 10px;
+	backdrop-filter: blur(15px);
+}
+
+.loading-container h5 {
+	font-size: 60%;
+/*	color: #cfa725;*/
+}
+
+
+
+
+
+
