@@ -16,10 +16,10 @@ $(document).ready(function() {
 		}
 		else if (e.keyCode == 13) {
 			if($(".selectedGame").eq(0).css("visibility") == "visible") {
-				//window.open(LUDO HTML URL GOES HERE);
+				//window.open("LUDO HTML URL GOES HERE", "_self");
 			}
 			else {
-				window.open("minesweeper/algoUI.html");
+				window.open("minesweeper/boardSelect.html", "_self");
 			}
 		}
 	});

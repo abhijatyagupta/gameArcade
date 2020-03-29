@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100px;
+	color: black;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #efefef;
+}
+
+.main-table-container {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	font-size: 35%;
+	font-family: 'SF Mono';
+}
+
+table {
+	width: 70%;
+	vertical-align: middle;
+	border-collapse: collapse;
+}
+
+table, td {
+	border: solid 3px #35363A;
+}
+
+.active-diff:hover {
+	box-shadow: 0px 0px 7px 1px #35363A inset;
+	transition: box-shadow 0.2s;
+}
