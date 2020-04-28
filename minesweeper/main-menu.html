@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minesweeper</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../normalize.css">
+		<link rel="stylesheet" type="text/css" href="" id="actualMenuCss">
+		<link rel="stylesheet" type="text/css" href="../fonts/stylesheet.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+		
+		<script>
+			checkDM();
+			function checkDM() {
+				$("#actualMenuCss").attr("href", Boolean(sessionStorage.getItem("isDarkModeToggled")) ? "darkMenu.css" : "main-menu-style.css");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="the-container">
+			<div class="the-actual-container">
+				<div class="theHeading">Minesweeper</div>
+				<div class="menu-table">
+					<table border>
+						<tr>
+							<td style="background-color: #D72483;" id="heading"><span>Main Menu</span></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="background-color: #38719E; cursor: pointer;" id="opt1" onclick='window.open("boardSelect.html", "_self");'><span>Start</span></td>
+						</tr>
+						<tr>
+							<td style="background-color: #38719E; cursor: pointer;" id="opt2" onclick="opt()"><span>Options</span></td>
+						</tr>
+						<tr>
+							<td style="background-color: #38719E; cursor: pointer; border-bottom-width: 3px;" id="opt3" onclick='window.open("../index.html", "_self");'><span>Exit</span></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			function opt() {
+				$("#opt2").attr("onclick", "");
+				$("#opt1").attr("onclick", "");
+				$("#opt3").attr("onclick", "");
+				$("#opt1 span, #opt2 span, #opt3 span, #heading span").fadeOut(300, function() {
+					$("#opt1").html('<span style="float: left; margin-left: 20%;">Sound</span><span style="float: right; margin-right: 20%;"><div class="switch switch1" onclick=' + 'toggleThis("sound")' + '><div class="toggle toggle1"></div></div></span>');
+					
+					$("#opt2").html('<span style="float: left; margin-left: 20%;">Dark Mode</span><span style="float: right; margin-right: 20%;"><div class="switch switch2" onclick=' + 'toggleThis()' + '><div class="toggle toggle2"></div></div></span>');
+					
+					
+					setVisualState();
+					
+					
+					$("#heading span").html("Options");
+					$("#opt3 span").html("Back");
+					$("#opt3").attr("onclick", "goBack()");
+					
+					$("#opt1 span, #opt2 span, #opt3 span, #heading span").fadeIn();
+				});
+			}
+			
+			
+			function goBack() {
+				$("#opt3").attr("onclick", 'window.open("../gameArcade.html", "_self");');
+				$("#opt2").attr("onclick", "opt()");
+				$("#opt1").attr("onclick", 'window.open("boardSelect.html", "_self");');
+				$("#opt1 span, #opt2 span, #opt3 span, #heading span").fadeOut(300, function() {
+					$("#heading span").html("Main Menu");
+					$("#opt1").html("<span>Start</span>");
+					$("#opt2").html("<span>Options</span>");
+					$("#opt3").html("<span>Exit</span>");
+				});
+				
+				$("#opt1 span, #opt2 span, #opt3 span, #heading span").fadeIn();
+				
+			}
+			
+			if(sessionStorage.getItem("isSoundToggled") == null) {
+				sessionStorage.setItem("isSoundToggled", "toggled");
+				sessionStorage.setItem("isDarkModeToggled", "");
+			}
+			var isSoundToggled = Boolean(sessionStorage.getItem("isSoundToggled"));
+			var isDarkModeToggled = Boolean(sessionStorage.getItem("isDarkModeToggled"));
+
+			
+			function toggleThis(what) {
+//				what == "sound" ? toggleVisualState("sound") : toggleVisualState("");
+				if(what == "sound") {
+					toggleVisualState("sound");
+				}
+				else {
+					toggleVisualState("");
+					checkDM();
+				}
+			}
+			
+			
+			function toggleVisualState(what) {
+				if(what == "sound") {
+					$(".toggle1").css("animation-name", isSoundToggled ? "slid2" : "slid1");
+					$(".switch1").css("background-color", isSoundToggled ? "#787880" : "#32D74B");
+					sessionStorage.setItem("isSoundToggled", isSoundToggled ? "" : "true");
+					isSoundToggled = !isSoundToggled;
+				}
+				else {
+					$(".toggle2").css("animation-name", isDarkModeToggled ? "slid2" : "slid1");
+					$(".switch2").css("background-color", isDarkModeToggled ? "#787880" : "#32D74B");
+					sessionStorage.setItem("isDarkModeToggled", isDarkModeToggled ? "" : "true");
+					isDarkModeToggled = !isDarkModeToggled;
+				}
+			}
+			
+			function setVisualState(what) {
+				$(".toggle1").css("transform", isSoundToggled ? "translateX(65%)" : "translateX(0%)");
+				$(".switch1").css("background-color", isSoundToggled ? "#32D74B" : "#787880");
+				$(".toggle2").css("transform", isDarkModeToggled ? "translateX(65%)" : "translateX(0%)");
+				$(".switch2").css("background-color", isDarkModeToggled ? "#32D74B" : "#787880");
+			}
+		</script>
+	</body>
+</html>

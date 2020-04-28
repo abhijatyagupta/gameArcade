@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>-->
+		
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="../normalize.css">
+		<link rel="stylesheet" type="text/css" href="tutorialStyle.css" id="actualTutCss">
+		<script>
+			$("#actualTutCss").attr("href", Boolean(sessionStorage.getItem("isDarkModeToggled")) ? "darkTutorial.css" : "tutorialStyle.css");
+		</script>
+		
+		
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="quit-container">
+			<div class="abandonTut">
+				<table>
+					<tr>
+						<td colspan="2" style="background-color: #38719E;">Are you sure you want to quit this tutorial?</td>
+					</tr>
+					<tr>
+						<td class="yesno" style="background-color: #37A053; width: 50%; cursor: pointer;" onclick="okQuit(true)">Yes</td>
+						<td class="yesno" style="background-color: #d72440; cursor: pointer" onclick="okQuit(false)">No</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="tut-msg-container">
+			There are mines hidden under some of these squares.
+			<br>
+			Let's learn how to determine their location without detonating them.
+		</div>
+		
+		<div class="tut-grid-container">
+			<div>
+				<img src="pictures/cursor.png" id="cursor" oncontextmenu="return false;">
+				<table class="the-table" cellspacing="10" oncontextmenu="return false;">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td id="bmbsquare1"><span>&#128163;</span></td>
+						<td id="bmbsquare2"><span>&#128163;</span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td id="bmbsquare3"><span>&#128163;</span></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td onclick="click1()"></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="next-button quit" onclick="quit()">
+			Quit
+		</div>
+		<div class="next-button next" onclick="next()">
+			Next
+		</div>
+		<script>
+			var isDarkModeToggled = Boolean(sessionStorage.getItem("isDarkModeToggled"));
+			
+			function toggleHeader(message) {
+				$(".tut-msg-container").animate({top: "-100px"}, 500, function() {
+					$(".tut-msg-container").html(message);
+				});
+				$(".tut-msg-container").animate({top: "0%"}, 1000);
+			}
+			
+			function enableNext(enable) {
+				if(enable) {
+					$(".next").attr("onclick", "next()").css("background-color", "#37A053").css("filter", "brightness(100%)").css("cursor", "pointer");
+				}
+				else {
+					$(".next").attr("onclick", "").css("background-color", "#5e605f").css("filter", "brightness(50%)").css("cursor", "not-allowed");
+				}
+			}
+			
+			$(".tut-msg-container").animate({top: "0%"}, 1000);
+			
+			
+			var clickEnabled = false;
+			var stage = 1;
+			function next() {
+				if (stage == 1) {
+					$(".tut-grid-container").css("padding-right", "5.2%");
+					$("#bmbsquare1 span, #bmbsquare2 span, #bmbsquare3 span").css("animation-play-state", "paused");
+					$("#bmbsquare1 span").html("");
+					$("#bmbsquare2 span").html("");
+					$("#bmbsquare3 span").html("");
+					toggleHeader("Your first click is always safe.");
+					$("#cursor").fadeIn("slow");
+					enableNext(false);
+				}
+				else if (stage == 2) {
+					enableNext(false);
+					$("#bmbsquare3").attr("onclick", "click2(event)").attr("oncontextmenu", "click2(event); return false;");
+					toggleHeader("We know there must be a mine here.<br>Right-click to place a flag on this square.");
+					$("#cursor").attr("src", "pictures/right-click.png").css("bottom", "170px").css("left", "57%").css("animation-name", "anim2");
+				}
+				else if(stage == 3) {
+					$(".tut-grid-container").css("padding-right", "6.8%");
+					toggleHeader("We know there must be a mine here.<br>Right-click to place a flag on this square.");
+					$("#cursor").css("display", "none");
+					$("#img2").attr("src", "pictures/right-click.png").css("left", "72%").css("animation-name", "anim2");
+					$("#bmbsquare1").attr("oncontextmenu", "click3(event); return false;");
+					enableNext(false);
+				}
+				else if (stage == 4) {
+					$(".tut-grid-container").css("padding-right", "5.3%");
+					enableNext(false);
+					toggleHeader("Click to uncover this square.")
+					$("#img2").css("display", "none");
+					$("#cursor").css("height", "40px").attr("src", "pictures/cursor.png").css("animation-name", "anim8").css("bottom", "360px");
+					$(".the-table tr:eq(0) td:eq(4)").attr("onclick", "click4()");
+				}
+				else if (stage == 5) {
+					sessionStorage.setItem("difficulty", "Easy");
+					window.open("algoUI.html", "_self");
+				}
+				stage++;
+			}
+			
+			function click1() {
+				$(".tut-grid-container").css("padding-right", "6.7%");
+				clickSound();
+				$("#cursor").css("bottom", "155px");
+				for(var i = 0; i < 5; i++) {
+					for(var j = 0; j < 5; j++) {
+						if((i == 0 && j == 3) || (i == 0 && j == 4) || (i == 2 && j == 2)) {
+							continue;
+						}
+						$(".the-table tr:eq(" + i + ") td:eq(" + j + ")").css("background-color", isDarkModeToggled ? "#48494D" : "#35363a").css("color", "white").css("border-color", "black");
+					}
+				}
+				$('.the-table tr:eq("0") td:eq("2")').html(1);
+				$('.the-table tr:eq("1") td:eq("1")').html(1);
+				$('.the-table tr:eq("1") td:eq("2")').html(2);
+				$('.the-table tr:eq("1") td:eq("3")').html(2);
+				$('.the-table tr:eq("1") td:eq("4")').html(1);
+				$('.the-table tr:eq("2") td:eq("1")').html(1);
+				$('.the-table tr:eq("2") td:eq("3")').html(1);
+				$('.the-table tr:eq("3") td:eq("1")').html(1);
+				$('.the-table tr:eq("3") td:eq("2")').html(1);
+				$('.the-table tr:eq("3") td:eq("3")').html(1);
+				$("#cursor").attr("src", "pictures/leftArrow.png").css("height", "60px").css("left", "59%").css("animation-name", "anim3");
+				toggleHeader("A 1 means exactly one mine is touching this square.<br>This mine could by anywhere around the 1, even at a diagonal.");
+				enableNext(true);
+//				stage++;	
+			}
+			
+			
+			function click2(event) {
+				if(event.button == 2) {
+					$(".tut-grid-container").css("padding-right", "10.7%");
+					revealSound();
+					$(event.target).css("background-color", isDarkModeToggled ? "#799eaa" : "lightblue").css("color", "black").html("&#128681");
+					$(event.target).attr("onclick", "");
+					toggleHeader("A 2 means exactly two mines touch this square.");
+					$("#cursor").css("bottom", "250px").css("left" , "56%").css("animation-name", "anim5").attr("src", "pictures/leftArrow.png").after('<img src="' + "pictures/leftArrow.png" + '" id="img2">');
+//					stage++;
+					enableNext(true);
+				}
+				
+			}
+			
+			function click3(event) {
+				if(event.button == 2) {
+					$(".tut-grid-container").css("padding-right", "10.7%");
+					revealSound();
+					toggleHeader("A 1 means only one mine is touching the square.<br>The square next to the flag is definitely safe.")
+					$(event.target).css("background-color", isDarkModeToggled ? "#799eaa" : "lightblue").css("color", "black").html("&#128681");
+					$(event.target).attr("onclick", "");
+					$("#img2").attr("src", "pictures/leftArrow.png").css("animation-name", "anim6");
+					$("#cursor").css("display", "inline").css("animation-name", "anim7").css("bottom", "350px");
+//					stage++;
+					enableNext(true);
+				}
+			}
+			
+			function click4() {
+				$(".tut-grid-container").css("padding-right", "2.1%");
+				clickSound();
+				toggleHeader("Good Job! Click next to play an easy level.");
+				$("#cursor").css("display", "none");
+				$(".the-table tr:eq(0) td:eq(4)").css("background-color", isDarkModeToggled ? "#48494D" : "#35363a").css("color", "white").css("border-color", "black").html("1");
+//				stage++;
+				enableNext(true);
+			}
+			
+			function quit() {
+				if(stage < 5) {
+					$(".quit-container").css("display", "flex");
+				}
+				else {
+					window.open("boardSelect.html", "_self");
+				}
+			}
+			
+			function okQuit(yesOrNo) {
+				if(yesOrNo) {
+					window.open("boardSelect.html", "_self");
+				}
+				else {
+					$(".quit-container").css("display", "none");
+				}
+			}
+		</script>
+		<script type="text/javascript" src="algoAudio.js"></script>
+	</body>
+</html>

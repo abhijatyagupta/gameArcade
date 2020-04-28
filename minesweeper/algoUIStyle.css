@@ -18,6 +18,8 @@ body {
 .grid-container {
 	font-size: 50%;
 	height: 100%;
+	width: 83%;
+	float: right;
 	align-items: center;
 	justify-content: center;
 	display: flex;
@@ -30,12 +32,11 @@ body {
 }
 
 .main-table td {
-	box-shadow: 2px 2px 0px black;
 	width: 65px;
 	height: 65px;
 	text-align: center;
 	vertical-align: middle;
-	border: 2px solid #35363a;
+	border: 2.5px solid #35363a;
 	background-color: white;
 	user-select: none;
 	cursor: pointer;
@@ -59,7 +60,6 @@ body {
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.8);
 	font-family: 'Roboto Mono';
-	background-color:;
 	font-size: 23%;
 	color: white;
 	width: 100%;
@@ -76,15 +76,6 @@ body {
 
 .loading-container h5 {
 	font-size: 60%;
-/*	color: #cfa725;*/
-}
-
-iframe {
-	width: 35%;
-	justify-content: center;
-	border: none;
-	display: none;
-	box-shadow: 0px 0px 3px #35363A;
 }
 
 .back-to-bs {
@@ -105,4 +96,143 @@ iframe {
 	background-color: #38719E;
 	border: 3px solid #35363A;
 	box-shadow: 0px 0px 3px #35363A inset, 0px 0px 3px #35363A;
+}
+
+.live-scoreboard {
+	position: fixed;
+	z-index: 1;
+	height: 100%;
+	width: 17%;
+	justify-content: center;
+	background-color: white;
+	box-shadow: 0px 0px 3px #35363A;
+	text-align: center;
+	transform: translateX(-100%);
+	transition: transform 1.5s;
+}
+
+.sb-title {
+	position: relative;
+	top: 3%;
+	font-family: 'SignPainter';
+	font-size: 40%;
+	color: #35363A;
+	text-shadow: 0px 0px 2px #35363A;
+}
+
+.current-stats {
+	position: relative;
+	top: 10%;
+	font-family: 'Roboto Mono';
+	font-size: 15%;
+	text-shadow: 0px 0px 2.5px #35363A;
+	background-color: #C9C9C9;
+	margin: 0 10%;
+	padding: 10% 0;
+	border-radius: 5px;
+}
+
+.current-stats p {
+	margin-bottom: 5%;
+}
+
+.pause {
+	position: relative;
+	top: 25%;
+	font-family: 'Roboto Mono';
+	font-size: 15%;
+	text-shadow: 0px 0px 1px #35363A;
+}
+
+.goback-menu {
+	color: white;
+	position: relative;
+	top: 40%;
+	font-family: 'Roboto Mono';
+	font-size: 20%;
+	margin-right: 10%;
+	margin-left: 15%;
+}
+
+.goback-menu table {
+	width: 90%;
+	border-color: pink;
+	border: 3px solid #35363A;
+	border-collapse: collapse;
+	box-shadow: 0px 0px 3px #35363A;
+}
+
+.goback-menu table td {
+	border: 3px solid #35363A;
+	height: 50px;
+	box-shadow: 0px 0px 3px inset #35363A;
+	user-select: none;
+}
+
+.goback-menu table td[style="background-color: #38719E"]:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 15px #35363A inset;
+	transition: box-shadow 0.2s;
+}
+
+.goback-menu table td[style="background-color: #38719E"]:active {
+	box-shadow: 0px 0px 30px #35363A inset;
+}
+
+
+
+.game-over-table {
+	color: white;
+	font-family: 'Roboto Mono';
+	width: 35%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset, 0px 0px 6px #35363A;
+	border-collapse: collapse;
+	display: none;
+}
+
+
+.game-over-table td {
+	padding: 3% 3%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset, 0px 0px 3px #35363A;
+	text-align: center;
+}
+
+.one:hover, .first:hover {
+	box-shadow: 0px 0px 15px #35363A inset;
+	transition: box-shadow 0.2s;
+}
+
+.one:active, .first:active {
+	box-shadow: 0px 0px 30px #35363A inset;
+}
+
+.abandonPrompt {
+	display: none;
+	
+}
+
+.abandonPrompt table {
+	border-collapse: collapse;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 3px #35363A inset, 0px 0px 0.5px white;
+}
+
+
+.abandonPrompt table td {
+	padding: 3%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset;
+}
+
+
+
+
+/*-------------------
+ANIMATING CLASSES
+-------------------*/
+
+.cool {
+	transform: translateX(0%);
 }

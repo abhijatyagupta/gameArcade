@@ -1,0 +1,158 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100px;
+	color: black;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	background-color: #efefef;
+}
+
+
+.the-container {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.the-actual-container {
+	text-align: center;
+}
+
+.theHeading {
+	margin-top: -9%;
+	margin-bottom: 9%;
+	font-family: 'SignPainter';
+	color: #35363A;
+	font-size: 150%;
+	text-shadow: 0px 0px 3px #35363A;
+}
+
+
+.menu-table {
+	font-family: 'Roboto Mono';
+	font-size: 40%;
+	color: white;
+	margin-right: 3%;
+	margin-left: 3%;
+	box-shadow: 0px 0px 3px #35363A;
+	user-select: none;
+}
+
+.menu-table table {
+	overflow: hidden;
+	width: 100%;
+	border-collapse: collapse;
+	border: solid #35363A 3px;
+}
+
+.menu-table td {
+	width: 100%;
+	border: none;
+}
+
+.menu-table table td {
+	height: 52px;
+	box-shadow: 0px 0px 3px #35363A inset;
+}
+
+#opt1:hover, #opt2:hover, #opt3:hover {
+	box-shadow: 0px 0px 15px #35363A inset;
+	transition: box-shadow 0.2s;
+}
+
+#opt1:active, #opt2:active, #opt3:active {
+	box-shadow: 0px 0px 30px #35363A inset;
+	
+}
+
+#opt1, #opt3 {
+	border-bottom-style: solid;
+	border-bottom-color: #35363A;
+	border-bottom-width: 3px;
+	border-top-style: solid;
+	border-top-color: #35363A;
+	border-top-width: 3px;
+}
+
+#heading {
+	border-bottom-style: solid;
+	border-bottom-color: #35363A;
+	border-bottom-width: 3px;
+}
+
+.switch {
+	margin-top: 15%;
+	width: 55px;
+	height: 35px;
+	border-radius: 100px;
+	
+}
+
+.toggle {
+	height: 30px;
+	width: 30px;
+	background-color: white;
+	border-radius: 100%;
+	margin: 2.5px;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+	float: left;
+}
+
+.switch1 {
+	background-color: #32D74B;
+}
+
+.switch2 {
+	background-color: #787880;
+}
+
+.toggle1, .toggle2 {
+	animation-name: ;
+	animation-duration: 0.1s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+	animation-fill-mode: forwards;
+}
+
+.toggle1 {
+	transform: translateX(65%);
+}
+
+.toggle2 {
+	transform: translateX(0%);
+}
+
+
+
+@keyframes slid1 {
+	from {
+		transform: translateX(0%);
+	}
+	
+	to {
+		transform: translateX(65%);
+	}
+}
+
+@keyframes slid2 {
+	from {
+		transform: translateX(65%);
+	}
+	
+	to {
+		transform: translateX(0%);
+	}
+}

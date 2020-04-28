@@ -19,7 +19,7 @@ $(document).ready(function() {
 				//window.open("LUDO HTML URL GOES HERE", "_self");
 			}
 			else {
-				window.open("minesweeper/boardSelect.html", "_self");
+				window.open("minesweeper/main-menu.html", "_self");
 			}
 		}
 	});

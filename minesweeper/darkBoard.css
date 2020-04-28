@@ -12,7 +12,7 @@ html {
 
 body {
 	height: 100%;
-	background-color: #efefef;
+	background-color: #202124;
 }
 
 .main-table-container {
@@ -31,19 +31,20 @@ body {
 	width: 70%;
 	vertical-align: middle;
 	border-collapse: collapse;
-	border: solid 3px #35363A;
-	box-shadow: 0px 0px 7px 1px #35363A;
+	border: solid 3px #efefef;
+	box-shadow: 0px 0px 7px 1px #efefef;
 	
 }
 
 .main-table-container table td {
-	border: solid 3px #35363A;
-	box-shadow: 0px 0px 3px #35363A inset;
+	border: solid 3px #efefef;
+	box-shadow: 0px 0px 3px #efefef inset;
 }
 
 .active-diff table td {
 	border-style: hidden;
 	box-shadow: none;
+	color: #efefef;
 }
 
 .active-diff table {
@@ -51,12 +52,12 @@ body {
 }
 
 .active-diff:hover {
-	box-shadow: 0px 0px 7px 1px #35363A inset;
+	box-shadow: 0px 0px 7px 1px #efefef inset;
 	transition: box-shadow 0.2s;
 }
 
 .active-diff:active {
-	box-shadow: 0px 0px 7px 3px #35363A inset;
+	box-shadow: 0px 0px 7px 3px #efefef inset;
 }
 
 img {
@@ -64,13 +65,13 @@ img {
 }
 
 .back:hover {
-	box-shadow: 0px 0px 15px #35363A inset;
+	box-shadow: 0px 0px 15px #efefef inset;
 	transition: box-shadow 0.2s;
 }
 
 
 .back:active {
-	box-shadow: 0px 0px 30px #35363A inset;
+	box-shadow: 0px 0px 30px #efefef inset;
 }
 
 .custom-container {
@@ -91,7 +92,7 @@ img {
 
 .custom-container table {
 	width: 25%;
-	border: solid 3px #35363A;
+	border: solid 3px #efefef;
 	border-collapse: collapse;
 	box-shadow: 0px 0px 1px white;
 	text-align: center;
@@ -103,5 +104,5 @@ img {
 }
 
 .back2 {
-	box-shadow: 0px 0px 3px #35363A inset;
+	box-shadow: 0px 0px 3px #efefef inset;
 }

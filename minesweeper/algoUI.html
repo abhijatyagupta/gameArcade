@@ -2,18 +2,21 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>-->
 		
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		
-<!--		<link rel="stylesheet" type="text/css" href="../fonts/stylesheet.css">-->
+		<link rel="stylesheet" type="text/css" href="../fonts/stylesheet.css">
 		<link rel="stylesheet" type="text/css" href="../normalize.css">
-		<link rel="stylesheet" type="text/css" href="algoUIStyle.css">
+		<link rel="stylesheet" type="text/css" href="" id="actualAlgoCss">
+		
+		<script>
+			$("#actualAlgoCss").attr("href", Boolean(sessionStorage.getItem("isDarkModeToggled")) ? "darkAlgoUI.css" : "algoUIStyle.css");
+		</script>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 		<script>
 		</script>
 	</head>
-	<body>
+	<body>	
 		<div class="back-to-bs">
 			<div class="first" onclick='window.open("boardSelect.html", "_self");'>
 				Back to<br>Board Select
@@ -24,10 +27,74 @@
 				View Score
 			</div>
 		</div>
+		<div class="sound-icon" style="position: fixed;z-index: 3;right: 1.5%;bottom: 1%;">
+			<img src="pictures/soundOn.png" class="the-icon" onclick="toggleSound()" style="height: 30px; border: 1px solid black;border-radius: 100%;padding: 10%;background-color: #efefef;cursor: pointer;">
+		</div>
+		<div class="live-scoreboard">
+			<div class="sb-title">
+				Minesweeper
+			</div>
+			<div class="current-stats">
+				<p id="difficulty"></p>
+				<p>Time: <span id="mins">00</span>:<span id="secs">00</span></p>
+				<p>Mines Remaining: <span></span></p>
+			</div>
+			<div class="pause">
+				Press P to pause/resume game
+			</div>
+			<div class="goback-menu">
+				<table>
+					<tr>
+						<td style="background-color: #D72483; font-size: 125%;">Back to:</td>
+					</tr>
+					<tr>
+						<td style="background-color: #38719E" onclick='backTo("boardSelect")'>Board Select</td>
+					</tr>
+					<tr>
+						<td style="background-color: #38719E" onclick='backTo("mainmenu")'>Main Menu</td>
+					</tr>
+				</table>
+			</div>
+		</div>			
 		<div class="loading-container">
 			<p>Loading</p>
+			<table class="game-over-table">
+				<tr style="background-color: #D72483;">
+					<td colspan="2"></td>
+				</tr>
+				<tr style="background-color: #37A053; font-size: 90%;">
+					<td style="width: 65%;">Mines Disarmed Bonus</td>
+					<td style=";"></td>
+				</tr>
+				<tr style="background-color: #37A053; font-size: 90%;">
+					<td style="width: 65%;">Board score</td>
+					<td style=";"></td>
+				</tr>
+				<tr style="background-color: #37A053; font-size: 90%;">
+					<td style="width: 65%;">Total Score</td>
+					<td style=";"></td>
+				</tr>
+				<tr class="one" style="background-color: #38719E; font-size: 90%; cursor: pointer;" onclick='viewBoard()'>
+					<td colspan="2">View Board</td>
+				</tr>
+				<tr class="one" style="background-color: #38719E; font-size: 90%; cursor: pointer;" onclick='window.open("boardSelect.html", "_parent")'>
+					<td colspan="2">New Game</td>
+				</tr>
+			</table>
+			<div class="abandonPrompt">
+				<table>
+					<tr>
+						<td colspan="2" style="background-color: #38719E;">Are you sure you want to abandon this game?</td>
+					</tr>
+					<tr>
+						<td class="one" style="background-color: #37A053; width: 50%; cursor: pointer;" onclick="okAbandon(true)">Yes</td>
+						<td class="one" style="background-color: #d72440; cursor: pointer" onclick="okAbandon(false)">No</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<div class="grid-container"></div>
+		<script type="text/javascript" src="algoAudio.js"></script>
 		<script type="text/javascript" src="algo.js"></script>
 	</body>
 </html>

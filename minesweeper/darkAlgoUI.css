@@ -1,0 +1,245 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100px;
+	color: black;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #202124;
+}
+
+.grid-container {
+	font-size: 50%;
+	height: 100%;
+	width: 83%;
+	float: right;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+	padding: 2%;
+}
+
+.main-table {
+	display: inline-block;
+}
+
+.main-table td {
+	width: 65px;
+	height: 65px;
+	text-align: center;
+	vertical-align: middle;
+	border: 1.5px solid #efefef;
+	background-color: #35363A;
+	user-select: none;
+	cursor: pointer;
+	font-family: 'Segoe UI Symbol';
+	font-size: 55%;
+	transition: background-color 0.2s;
+}
+
+.main-table td:active {
+	box-shadow: 0.5px 0.5px 0px black;
+}
+
+
+
+.loading-container {
+	position: fixed;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.8);
+	font-family: 'Roboto Mono';
+	font-size: 23%;
+	color: white;
+	width: 100%;
+	height: 100%;
+	user-select: none;
+}
+
+.loading-container p {
+	padding: 1% 3%;
+	background-color: #38719E;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 3px #35363A inset, 0px 0px 3px #35363A;
+}
+
+.loading-container h5 {
+	font-size: 60%;
+/*	color: #cfa725;*/
+}
+
+.back-to-bs {
+	position: fixed;
+	z-index: 3;
+	right: 1.5%;
+	top: 5%;
+	font-family: 'Roboto Mono';
+	font-size: 15%;
+	text-align: center;
+	display: none;
+}
+
+.first {
+	cursor: pointer;
+	color: white;
+	padding: 5% 1%;
+	background-color: #38719E;
+	border: 3px solid #efefef;
+}
+
+.first:hover {
+	box-shadow: 0px 0px 15px #efefef inset;
+	transition: box-shadow 0.2s;
+}
+
+.live-scoreboard {
+	position: fixed;
+	z-index: 1;
+	height: 100%;
+	width: 17%;
+	justify-content: center;
+	background-color: #35363A;
+	box-shadow: 0px 0px 3px #35363A;
+	text-align: center;
+	transform: translateX(-100%);
+	transition: transform 1.5s;
+}
+
+.sb-title {
+	position: relative;
+	top: 3%;
+	font-family: 'SignPainter';
+	font-size: 40%;
+	color: #efefef;
+	text-shadow: 0px 0px 1px #efefef;
+}
+
+.current-stats {
+	position: relative;
+	top: 10%;
+	font-family: 'Roboto Mono';
+	font-size: 15%;
+	text-shadow: 0px 0px 1px #efefef;
+	background-color: #2A2B2E;
+	margin: 0 10%;
+	padding: 10% 0;
+	border-radius: 5px;
+	color: #efefef;
+}
+
+.current-stats p {
+	margin-bottom: 5%;
+}
+
+.pause {
+	position: relative;
+	top: 25%;
+	font-family: 'Roboto Mono';
+	font-size: 15%;
+	text-shadow: 0px 0px 1px #efefef;
+	color: #efefef;
+}
+
+.goback-menu {
+	color: white;
+	position: relative;
+	top: 40%;
+	font-family: 'Roboto Mono';
+	font-size: 20%;
+	margin-right: 10%;
+	margin-left: 15%;
+}
+
+.goback-menu table {
+	width: 90%;
+	border-color: pink;
+	border: 3px solid #efefef;
+	border-collapse: collapse;
+	box-shadow: 0px 0px 3px #efefef;
+}
+
+.goback-menu table td {
+	border: 3px solid #efefef;
+	height: 50px;
+	box-shadow: 0px 0px 3px inset #efefef;
+	user-select: none;
+}
+
+.goback-menu table td[style="background-color: #38719E"]:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 15px #efefef inset;
+	transition: box-shadow 0.2s;
+}
+
+.goback-menu table td[style="background-color: #38719E"]:active {
+	box-shadow: 0px 0px 30px #efefef inset;
+}
+
+
+
+.game-over-table {
+	color: white;
+	font-family: 'Roboto Mono';
+	width: 35%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset, 0px 0px 6px #35363A;
+	border-collapse: collapse;
+	display: none;
+}
+
+
+.game-over-table td {
+	padding: 3% 3%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset, 0px 0px 3px #35363A;
+	text-align: center;
+}
+
+.one:hover {
+	box-shadow: 0px 0px 15px #35363A inset;
+	transition: box-shadow 0.2s;
+}
+
+.one:active, .first:active {
+	box-shadow: 0px 0px 30px #35363A inset;
+}
+
+.abandonPrompt {
+	display: none;
+	
+}
+
+.abandonPrompt table {
+	border-collapse: collapse;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 3px #35363A inset, 0px 0px 0.5px white;
+}
+
+
+.abandonPrompt table td {
+	padding: 3%;
+	border: 3px solid #35363A;
+	box-shadow: 0px 0px 6px #35363A inset;
+}
+
+
+
+
+/*-------------------
+ANIMATING CLASSES
+-------------------*/
+
+.cool {
+	transform: translateX(0%);
+}

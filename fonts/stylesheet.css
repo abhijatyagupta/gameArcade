@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'SFMono';
-    src: url('SFMono-Regular.woff2') format('woff2'),
-        url('SFMono-Regular.woff') format('woff');
+    font-family: 'SignPainter';
+    src: url('SignPainter-HouseScript.woff2') format('woff2'),
+        url('SignPainter-HouseScript.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'League Gothic';
-    src: url('LeagueGothic-Regular.woff2') format('woff2'),
-        url('LeagueGothic-Regular.woff') format('woff');
+    font-family: 'SFMono';
+    src: url('SFMono-Regular.woff2') format('woff2'),
+        url('SFMono-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -21,4 +21,3 @@
     font-weight: normal;
     font-style: normal;
 }
-

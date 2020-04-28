@@ -7,7 +7,12 @@
 		
 <!--		<link rel="stylesheet" type="text/css" href="../fonts/stylesheet.css">-->
 		<link rel="stylesheet" type="text/css" href="../normalize.css">
-		<link rel="stylesheet" type="text/css" href="boardSelect.css">
+		<link rel="stylesheet" type="text/css" href="" id="actualBoardCss">
+		
+		<script>
+			$("#actualBoardCss").attr("href", Boolean(sessionStorage.getItem("isDarkModeToggled")) ? "darkBoard.css" : "boardSelect.css");
+		</script>
+		
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 	</head>
 	<body>
@@ -16,67 +21,184 @@
 				<tr style="background-color: #38719E; color: white;">
 					<td colspan="5">Board Select</td>
 				</tr>
-				<tr style="color: white;">
-					<td style="width: 20%; background-color: rgba(0, 0, 0, 0.7); color: rgba(255, 255, 255, 0.3); user-select: none;">Tutorial</td>
-					<td style="width: 20%; background-color: #44CD6D; cursor: pointer;" onclick='startGame("easy")'>Easy</td>
-					<td style="width: 20%; background-color: #D9C12A; cursor: pointer;" onclick='startGame("medium")'>Medium</td>
-					<td style="width: 20%; background-color: #CD4444; cursor: pointer;" onclick='startGame("expert")'>Expert</td>
-					<td style="width: 20%; background-color: rgba(0, 0, 0, 0.7); color: rgba(255, 255, 255, 0.3); user-select: none;">Custom</td>
+				<tr style="color: white;" id="titles">
+					<td style="width: 20%; cursor: pointer;" onclick="startTut()">Tutorial</td>
+					<td style="width: 20%; cursor: pointer;" onclick='startGame("easy")'>Easy</td>
+					<td style="width: 20%; cursor: pointer;" onclick='startGame("medium")'>Medium</td>
+					<td style="width: 20%; cursor: pointer;" onclick='startGame("expert")'>Expert</td>
+					<td style="width: 20%; cursor: pointer;" onclick='$(".custom-container").css("display", "flex");'>Custom</td>
 				</tr>
-				<tr style="height: 300px;">
-					<td style="background-color: rgba(0, 0, 0, 0.7); color: white; user-select: none;">
-						<p>Coming Soon!</p>
-<!--
+				<tr style="height: 40vh;">
+					<td class="active-diff" style="cursor: pointer;" onclick="startTut()">
 						<table style="margin: auto; font-size: 50%;">
 							<tr>
-								<td style="width: 40px; height: 140px; box-shadow: 0px 0px 12px #35363A inset">placeholder for image</td>
+								<td>
+									<img src="">
+								</td>
 							</tr>
-						</table>
--->
-					</td>
-					<td class="active-diff" style="cursor: pointer;" onclick='startGame("easy")'>
-						<table style="margin: auto; font-size: 50%;">
 							<tr>
-								<td style="width: 40px; height: 140px; box-shadow: 0px 0px 12px #35363A inset">placeholder for image</td>
+								<td>&nbsp;</td>
 							</tr>
 						</table>
 					</td>
-					<td class="active-diff" style="cursor: pointer;" onclick='startGame("medium")'>
+					<td class="active-diff" style="cursor: pointer;" onclick='startGame("Easy")'>
 						<table style="margin: auto; font-size: 50%;">
 							<tr>
-								<td style="width: 40px; height: 140px; box-shadow: 0px 0px 12px #35363A inset">placeholder for image</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>9x9</td>
 							</tr>
 						</table>
 					</td>
-					<td class="active-diff" style="cursor: pointer;" onclick='startGame("expert")'>
+					<td class="active-diff" style="cursor: pointer;" onclick='startGame("Medium")'>
 						<table style="margin: auto; font-size: 50%;">
 							<tr>
-								<td style="width: 40px; height: 140px; box-shadow: 0px 0px 12px #35363A inset">placeholder for image</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>16x16</td>
 							</tr>
 						</table>
 					</td>
-					<td style="background-color: rgba(0, 0, 0, 0.7); color: white; user-select: none;">
-						<p>Coming Soon!</p>
-<!--
+					<td class="active-diff" style="cursor: pointer;" onclick='startGame("Expert")'>
 						<table style="margin: auto; font-size: 50%;">
 							<tr>
-								<td style="width: 40px; height: 140px; box-shadow: 0px 0px 12px #35363A inset">placeholder for image</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>16x30</td>
 							</tr>
 						</table>
--->
 					</td>
-					
+					<td class="active-diff" style="cursor: pointer;" onclick='$(".custom-container").css("display", "flex");'>
+						<table style="margin: auto; font-size: 50%;">
+							<tr>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
-				<tr style="background-color: #38719E; color: white;">
-					<td colspan="5" style="cursor: pointer;" onclick='window.open("../index.html", "_self");'>Back</td>
+				<tr style="background-color: #38719E; color: white;" class="back">
+					<td colspan="5" style="cursor: pointer;" onclick='window.open("main-menu.html", "_self");'>Back</td>
 				</tr>
 			</table>
 		</div>
+		<div class="custom-container">
+			<table border>
+				<tr>
+					<td colspan="2" style="background-color: #38719E; border: solid 3px #35363A; box-shadow: 0px 0px 3px #35363A inset;">Enter Parameters</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: left; padding: 5%; background-color: #EFEFEF; color: black;">
+						Height: <input type="range" min="9" max="16" step="1" value="9" id="slider1">
+						<span id="slider1value">
+							9
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: left; padding: 5%; background-color: #EFEFEF; color: black;">
+						Width: <input type="range" min="9" max="30" step="1" value="9" id="slider2">
+						<span id="slider2value">
+							9
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: left; padding: 5%; background-color: #EFEFEF; color: black;">
+						Mines: <input type="range" min="10" max="64" step="1" value="9" id="slider3">
+						<span id="slider3value">
+							10
+						</span>
+					</td>
+				</tr>
+				<tr style="cursor: pointer;">
+					<td style="background-color: #38719E; border: solid 3px #35363A; width: 20%; padding: 0 0;" onclick='$(".custom-container").css("display", "none");' class="back back2">Back</td>
+					<td style="background-color: #37A053; border: solid 3px #35363A;" class="back back2" onclick="startCustomGame()">Start</td>
+				</tr>
+			</table>
+			
+			
+		</div>
 		<script>
+			if (Boolean(sessionStorage.getItem("isDarkModeToggled"))) {
+				$(".active-diff img:eq(0)").attr("src", "pictures/Component%201dark%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(1)").attr("src", "pictures/Component%202dark%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(2)").attr("src", "pictures/Component%203dark%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(3)").attr("src", "pictures/Component%204dark%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(4)").attr("src", "pictures/Component%205dark%20%E2%80%93%201@2x.png");
+				$("#titles").attr("style", "color: white; background: linear-gradient(0deg, rgba(75,25,73,1) 0%, rgba(215,36,131,1) 100%);");
+			}
+			else {
+				$(".active-diff img:eq(0)").attr("src", "pictures/Component%205%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(1)").attr("src", "pictures/Component%201%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(2)").attr("src", "pictures/Component%202%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(3)").attr("src", "pictures/Component%203%20%E2%80%93%201@2x.png");
+				$(".active-diff img:eq(4)").attr("src", "pictures/Component%204%20%E2%80%93%201@2x.png");
+				$("#titles td:eq(0)").css("background-color", "#44C4CD");
+				$("#titles td:eq(1)").css("background-color", "#44CD6D");
+				$("#titles td:eq(2)").css("background-color", "#D9C12A");
+				$("#titles td:eq(3)").css("background-color", "#CD4444");
+				$("#titles td:eq(4)").css("background-color", "#D98E28");
+				
+			}
+			
+			
+			
+			
 			function startGame(difficulty) {
 				sessionStorage.setItem("difficulty", difficulty);
 				window.open("algoUI.html", "_self");
 			}
+			
+			function startCustomGame() {
+				sessionStorage.setItem("difficulty", "Custom");
+				sessionStorage.setItem("totalMines", $("#slider3").val());
+				sessionStorage.setItem("side1", $("#slider1").val());
+				sessionStorage.setItem("side2", $("#slider2").val());
+				window.open("algoUI.html", "_self");
+			}
+			
+			function startTut() {
+				window.open("tutorial.html", "_self");
+			}
+			
+			var slider1val;
+			var slider2val;
+			
+			$(document).on('input', '#slider1', function() {
+				$("#slider1value").html($(this).val());
+				slider1val = parseInt($("#slider1").val());
+				slider2val = parseInt($("#slider2").val());
+				$("#slider3").attr("max", ((slider1val-1)*(slider2val-1)));
+				$("#slider3value").html($("#slider3").val());
+				
+			});
+			
+			$(document).on('input', '#slider2', function() {
+				$("#slider2value").html($(this).val());
+				slider1val = parseInt($("#slider1").val());
+				slider2val = parseInt($("#slider2").val());
+				$("#slider3").attr("max", ((slider1val-1)*(slider2val-1)));
+				$("#slider3value").html($("#slider3").val());
+			});
+			
+			$(document).on('input', '#slider3', function() {
+				$("#slider3value").html($(this).val());
+			});
+			
 		</script>
 	</body>
 </html>
